@@ -1,5 +1,5 @@
-from abc import ABC, abstractmethod
 import math
+from abc import ABC, abstractmethod
 
 
 # Abstractions
@@ -50,7 +50,7 @@ class Triangle(FlatFigure):
 
     def calc_area(self) -> float:
         p = self.calc_perimeter() / 2
-        return math.sqrt(p*(p-self.side_a)*(p-self.side_b)*(p-self.side_c))
+        return math.sqrt(p * (p - self.side_a) * (p - self.side_b) * (p - self.side_c))
 
     def calc_height(self) -> float:
         return 2 * self.calc_area() / self.side_a
@@ -83,7 +83,7 @@ class Square(Parallelogram):
         self.side_b = side_a
 
     def calc_area(self) -> float:
-        return self.side_a**2
+        return self.side_a ** 2
 
     def calc_incircle_radius(self) -> float:
         return self.side_a / 2
@@ -112,7 +112,7 @@ class Rectangle(Parallelogram):
         return self.side_a * self.side_b
 
     def calc_diag_len(self) -> float:
-        return math.sqrt(self.side_a**2 + self.side_b**2)
+        return math.sqrt(self.side_a ** 2 + self.side_b ** 2)
 
 
 class Trapezium(Parallelogram):
@@ -129,8 +129,8 @@ class Trapezium(Parallelogram):
 
     def calc_area(self) -> float:
         return ((self.side_a + self.side_c) / 2) * \
-            math.sqrt(self.side_b**2 -
-                      ((self.side_c - self.side_a)**2 + self.side_b**2 - self.side_d**2) / 2 *
+            math.sqrt(self.side_b ** 2 -
+                      ((self.side_c - self.side_a) ** 2 + self.side_b ** 2 - self.side_d ** 2) / 2 *
                       (self.side_c - self.side_a))
 
     def calc_height(self) -> float:
@@ -146,7 +146,7 @@ class Circle(RoundFigure):
         self.angle = angle
 
     def calc_area(self) -> float:
-        return math.pi * self.radius**2
+        return math.pi * self.radius ** 2
 
     def calc_diameter(self) -> float:
         return 2 * self.radius
@@ -165,13 +165,13 @@ class Pyramid(SolidFigure):
 
     def calc_area(self) -> float:
         p = self.side_a / (2 * math.tan(math.radians(60)))
-        return (3 * self.side_a) / 2 * (p + math.sqrt(self.height**2 + p**2))
+        return (3 * self.side_a) / 2 * (p + math.sqrt(self.height ** 2 + p ** 2))
 
     def calc_volume(self) -> float:
-        return (self.height * self.side_a**2) / (4 * math.sqrt(3))
+        return (self.height * self.side_a ** 2) / (4 * math.sqrt(3))
 
     def calc_insphere_radius(self) -> float:
-        return (self.side_a * self.height) / (self.side_a + math.sqrt(self.side_a**2 + 12 * self.height**2))
+        return (self.side_a * self.height) / (self.side_a + math.sqrt(self.side_a ** 2 + 12 * self.height ** 2))
 
 
 class Cone(SolidFigure):
@@ -182,13 +182,13 @@ class Cone(SolidFigure):
         self.height = height
 
     def calc_area(self) -> float:
-        return math.pi * self.radius * (self.radius + math.sqrt(self.radius**2 + self.height**2))
+        return math.pi * self.radius * (self.radius + math.sqrt(self.radius ** 2 + self.height ** 2))
 
     def calc_volume(self) -> float:
-        return (1 / 3) * (math.pi * self.radius**2 * self.height)
+        return (1 / 3) * (math.pi * self.radius ** 2 * self.height)
 
     def calc_slant(self) -> float:
-        return math.sqrt(self.height**2 + self.radius**2)
+        return math.sqrt(self.height ** 2 + self.radius ** 2)
 
 
 class Parallelepiped(SolidFigure):
@@ -206,7 +206,7 @@ class Parallelepiped(SolidFigure):
         return self.side_a * self.side_b * self.side_c
 
     def calc_diag_len(self) -> float:
-        return math.sqrt(self.side_a**2 + self.side_b**2 + self.side_c**2)
+        return math.sqrt(self.side_a ** 2 + self.side_b ** 2 + self.side_c ** 2)
 
 
 class Cube(Parallelepiped):
@@ -228,10 +228,10 @@ class Sphere(SolidFigure):
         self.radius = radius
 
     def calc_area(self) -> float:
-        return 4 * math.pi * self.radius**2
+        return 4 * math.pi * self.radius ** 2
 
     def calc_volume(self) -> float:
-        return (4 / 3) * (math.pi * self.radius**3)
+        return (4 / 3) * (math.pi * self.radius ** 3)
 
     def calc_diameter(self) -> float:
         return self.radius * 2
@@ -248,7 +248,7 @@ class Cylinder(SolidFigure):
         return 2 * math.pi * self.radius * (self.height + self.radius)
 
     def calc_volume(self) -> float:
-        return math.pi * self.radius**2 * self.height
+        return math.pi * self.radius ** 2 * self.height
 
     def calc_side_area(self) -> float:
         return 2 * math.pi * self.radius * self.height

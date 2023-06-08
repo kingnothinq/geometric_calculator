@@ -32,6 +32,7 @@ class App(tk.Tk):
         # Start with the main window
         self.show_main()
 
+    @staticmethod
     def validate(self, value):
         """Check if the value is a positive integer"""
 
