@@ -33,7 +33,7 @@ class App(tk.Tk):
         self.show_main()
 
     @staticmethod
-    def validate(self, value):
+    def validate(value):
         """Check if the value is a positive integer"""
 
         if (isinstance(value, int) or isinstance(value, float)) and value > 0:
